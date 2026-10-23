@@ -14,12 +14,14 @@ from core.config import settings
 from core.quota import check_and_increment, product_quota, schema_slots
 from core.database import AsyncSessionLocal, get_db
 from core.dependencies import get_current_user_jwt, require_scope
-_auth = require_scope("docparse")
 from core.email import send_job_completed
+from core.webhooks import WebhookURLError, post_webhook, validate_webhook_url
 from models.docparse_job import DocparseJob
 from models.docparse_schema import DocParseSchema
 from models.user import User
 from models.vault import UsageLog
+
+_auth = require_scope("docparse")
 
 router = APIRouter()
 
@@ -152,7 +154,8 @@ async def _ocr_image(image_base64: str, media_type: str) -> str:
 
 async def _ocr_llamaparse(image_base64: str, media_type: str) -> str:
     """OCR a document image via LlamaParse, returns extracted text."""
-    import asyncio, base64 as _b64
+    import asyncio
+    import base64 as _b64
 
     api_key = settings.LLAMA_PARSE_API_KEY
     if not api_key:
@@ -368,11 +371,7 @@ async def _process_job(job_id: _uuid.UUID, fields: list[dict], schema_label: str
                     "fields": result_fields,
                     "completed_at": job.completed_at.isoformat(),
                 }
-                try:
-                    async with httpx.AsyncClient(timeout=10.0) as client:
-                        await client.post(job.webhook_url, json=payload)
-                except Exception:
-                    pass
+                await post_webhook(job.webhook_url, payload)
 
             if user_email:
                 import asyncio
@@ -385,15 +384,11 @@ async def _process_job(job_id: _uuid.UUID, fields: list[dict], schema_label: str
             await db.commit()
 
             if job.webhook_url:
-                try:
-                    async with httpx.AsyncClient(timeout=10.0) as client:
-                        await client.post(job.webhook_url, json={
-                            "job_id": str(job.id),
-                            "status": "failed",
-                            "error": str(exc),
-                        })
-                except Exception:
-                    pass
+                await post_webhook(job.webhook_url, {
+                    "job_id": str(job.id),
+                    "status": "failed",
+                    "error": str(exc),
+                })
 
             if user_email:
                 import asyncio
@@ -427,6 +422,11 @@ async def create_job(
     user: User = Depends(_auth),
     db: AsyncSession = Depends(get_db),
 ):
+    if body.webhook_url:
+        try:
+            await validate_webhook_url(body.webhook_url)
+        except (WebhookURLError, OSError) as exc:
+            raise HTTPException(status.HTTP_422_UNPROCESSABLE_ENTITY, f"Invalid webhook_url: {exc}")
     if not body.text.strip():
         raise HTTPException(status.HTTP_422_UNPROCESSABLE_ENTITY, "text must not be empty")
 
