@@ -1,0 +1,113 @@
+{
+  "custom_schema_cases": [
+    {
+      "id": "CS01_job_posting",
+      "description": "Extract fields from a corporate job posting",
+      "schema": {
+        "name": "job_posting",
+        "fields": [
+          {"name": "job_title", "type": "string", "description": "The title of the position being advertised"},
+          {"name": "company_name", "type": "string", "description": "Name of the hiring company"},
+          {"name": "location", "type": "string", "description": "City and country of the role"},
+          {"name": "salary_range", "type": "string", "description": "Stated salary or compensation range"},
+          {"name": "deadline", "type": "string", "description": "Application deadline date"},
+          {"name": "contact_email", "type": "string", "description": "Email address for applications or enquiries"}
+        ]
+      },
+      "text": "JOB POSTING — Senior Machine Learning Engineer\n\nCompany: Quantum Leap AI\nLocation: Amsterdam, Netherlands\nType: Full-time, Hybrid\n\nWe are seeking a Senior ML Engineer to join our Applied Research team. You will design and deploy large-scale recommendation and ranking systems serving 40M+ daily active users.\n\nSalary: EUR 95,000 – EUR 130,000 depending on experience, plus equity\n\nRequirements:\n- 5+ years in ML engineering\n- Strong background in PyTorch or JAX\n- Experience with distributed training at scale\n- Familiarity with MLOps (Kubeflow, MLflow)\n\nApply by: September 30, 2025\nSend CV and portfolio to: careers@quantumleap-ai.com",
+      "expected_extractions": {
+        "job_title": "Senior Machine Learning Engineer",
+        "company_name": "Quantum Leap AI",
+        "location": "Amsterdam, Netherlands",
+        "salary_range": "EUR 95,000 – EUR 130,000",
+        "deadline": "September 30, 2025",
+        "contact_email": "careers@quantumleap-ai.com"
+      }
+    },
+    {
+      "id": "CS02_medical_referral",
+      "description": "Extract fields from a physician referral letter",
+      "schema": {
+        "name": "medical_referral",
+        "fields": [
+          {"name": "patient_name", "type": "string", "description": "Full name of the patient"},
+          {"name": "referring_physician", "type": "string", "description": "Name and credentials of the referring doctor"},
+          {"name": "referral_reason", "type": "string", "description": "Medical reason for the referral"},
+          {"name": "specialist_type", "type": "string", "description": "Type of specialist being referred to"},
+          {"name": "referral_date", "type": "string", "description": "Date the referral letter was written"},
+          {"name": "urgency", "type": "string", "description": "Urgency level: routine, urgent, or emergency"}
+        ]
+      },
+      "text": "PATIENT REFERRAL LETTER\nDate: November 4, 2024\n\nDear Specialist,\n\nI am referring my patient, Mr. Tobias Kleinhempel (DOB: 1969-03-22), for a cardiology consultation. Over the past three months, Mr. Kleinhempel has reported recurring episodes of chest tightness and exertional dyspnoea. A recent ECG showed non-specific ST changes and his NT-proBNP is mildly elevated at 320 pg/mL.\n\nI am requesting an echocardiogram and a full cardiology assessment to rule out ischaemic heart disease or early heart failure.\n\nUrgency: Urgent — please schedule within two weeks if possible.\n\nReferring Physician: Dr. Amara Osei, MBBS, MRCGP\nGP Practice: Greenfield Medical Centre, Edinburgh",
+      "expected_extractions": {
+        "patient_name": "Tobias Kleinhempel",
+        "referring_physician": "Dr. Amara Osei",
+        "referral_reason": "Chest tightness and exertional dyspnoea with abnormal ECG and elevated NT-proBNP",
+        "specialist_type": "Cardiology",
+        "referral_date": "November 4, 2024",
+        "urgency": "urgent"
+      }
+    },
+    {
+      "id": "CS03_shipping_manifest",
+      "description": "Extract fields from a freight shipping manifest",
+      "schema": {
+        "name": "shipping_manifest",
+        "fields": [
+          {"name": "shipment_id", "type": "string", "description": "Unique shipment or bill of lading number"},
+          {"name": "shipper_name", "type": "string", "description": "Company or person sending the goods"},
+          {"name": "consignee_name", "type": "string", "description": "Company or person receiving the goods"},
+          {"name": "cargo_description", "type": "string", "description": "Description of the cargo contents"},
+          {"name": "total_weight_kg", "type": "number", "description": "Total weight of shipment in kilograms"},
+          {"name": "estimated_arrival", "type": "string", "description": "Expected delivery or arrival date"}
+        ]
+      },
+      "text": "FREIGHT SHIPPING MANIFEST\n\nBill of Lading No: BOL-AMS-2025-004872\nVessel: MV Pacific Carrier\nPort of Loading: Rotterdam, Netherlands\nPort of Discharge: Singapore\n\nShipper: Polaris Industrial Supplies B.V., Maasvlakte 2, Rotterdam\nConsignee: Meridian Manufacturing Pte Ltd, 12 Tuas Basin Close, Singapore 638784\n\nCargo Description: Industrial precision tools and calibration equipment (non-hazardous)\nHarmonized Code: 9031.80\nPackaging: 48 wooden crates, shrink-wrapped on 12 pallets\nGross Weight: 3,840 kg\nVolume: 22 CBM\n\nExpected Departure: 2025-04-07\nEstimated Arrival: 2025-04-29\n\nFreight charges: USD 4,200 (prepaid by shipper)\nInsurance: Covered under shipper's open cargo policy",
+      "expected_extractions": {
+        "shipment_id": "BOL-AMS-2025-004872",
+        "shipper_name": "Polaris Industrial Supplies B.V.",
+        "consignee_name": "Meridian Manufacturing Pte Ltd",
+        "cargo_description": "Industrial precision tools and calibration equipment",
+        "total_weight_kg": 3840,
+        "estimated_arrival": "2025-04-29"
+      }
+    }
+  ],
+  "builtin_schema_overrides": [
+    {
+      "id": "BO01_invoice_builtin",
+      "description": "Built-in invoice schema on new invoice fixture",
+      "schema": "invoice",
+      "fixture_file": "doc_invoice.txt",
+      "expected_field_presence": ["vendor_name", "invoice_number", "total_amount", "due_date"]
+    },
+    {
+      "id": "BO02_nda_builtin",
+      "description": "Built-in nda schema on new NDA fixture",
+      "schema": "nda",
+      "fixture_file": "doc_nda.txt",
+      "expected_field_presence": ["party_a", "party_b", "effective_date", "duration_years"]
+    },
+    {
+      "id": "BO03_w2_builtin",
+      "description": "Built-in w2 schema on new W2 fixture",
+      "schema": "w2",
+      "fixture_file": "doc_w2.txt",
+      "expected_field_presence": ["employee_name", "employer_name", "wages", "federal_tax"]
+    },
+    {
+      "id": "BO04_loan_builtin",
+      "description": "Built-in loan_application schema on new loan fixture",
+      "schema": "loan_application",
+      "fixture_file": "doc_loan.txt",
+      "expected_field_presence": ["applicant_name", "loan_amount", "loan_purpose"]
+    },
+    {
+      "id": "BO05_contract_builtin",
+      "description": "Built-in contract schema on new contract fixture",
+      "schema": "contract",
+      "fixture_file": "doc_contract.txt",
+      "expected_field_presence": ["parties", "effective_date", "contract_value"]
+    }
+  ]
+}

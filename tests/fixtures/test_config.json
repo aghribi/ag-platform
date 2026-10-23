@@ -1,0 +1,70 @@
+{
+  "_comment": "Test configuration for ag-tools API product tests. Set env vars or fill values before running.",
+  "api_base_url": "https://ai-api.artifact-network.org",
+  "api_base_url_local": "http://localhost:8100",
+  "api_version": "v1",
+  "env_vars": {
+    "api_key": "AG_TEST_API_KEY",
+    "jwt_token": "AG_TEST_JWT_TOKEN",
+    "admin_token": "AG_TEST_ADMIN_TOKEN"
+  },
+  "product_endpoints": {
+    "pii_vault": {
+      "tokenize":      "POST /v1/pii/tokenize",
+      "detokenize":    "POST /v1/pii/detokenize",
+      "tokens_store":  "POST /v1/pii/tokens",
+      "tokens_lookup": "POST /v1/pii/tokens/lookup",
+      "subjects_get":  "GET  /v1/pii/subjects/{subject_id}",
+      "subjects_del":  "DELETE /v1/pii/subjects/{subject_id}",
+      "stats_global":  "GET  /v1/pii/stats",
+      "stats_me":      "GET  /v1/pii/me/stats"
+    },
+    "evalforge": {
+      "score": "POST /v1/eval/score"
+    },
+    "guardrail": {
+      "check":          "POST /v1/guardrail/check",
+      "policies_create":"POST /v1/guardrail/policies",
+      "policies_list":  "GET  /v1/guardrail/policies",
+      "policies_delete":"DELETE /v1/guardrail/policies/{id}",
+      "audit_me":       "GET  /v1/guardrail/me/audit",
+      "stats":          "GET  /v1/guardrail/stats"
+    },
+    "docparse": {
+      "extract_sync":  "POST /v1/doc/extract",
+      "jobs_create":   "POST /v1/doc/jobs",
+      "jobs_get":      "GET  /v1/doc/jobs/{id}",
+      "jobs_list":     "GET  /v1/doc/jobs",
+      "schemas_list":  "GET  /v1/doc/schemas",
+      "schemas_create":"POST /v1/doc/schemas",
+      "schemas_update":"PUT  /v1/doc/schemas/{id}",
+      "schemas_delete":"DELETE /v1/doc/schemas/{id}",
+      "schemas_info":  "GET  /v1/doc/schemas/info"
+    }
+  },
+  "eu_ai_act_expected_headers": {
+    "x-eu-ai-act-article": "required",
+    "x-eu-ai-act-control": "required",
+    "x-eu-ai-act-regulation": "required"
+  },
+  "quota": {
+    "admin_reset_endpoint": "POST /admin/users/{user_id}/reset-quota",
+    "products": ["pii_vault", "evalforge", "guardrail", "docparse"]
+  },
+  "fixture_files": {
+    "pii_samples":       "fixtures/pii_samples.json",
+    "eval_cases":        "fixtures/eval_cases.json",
+    "guardrail_samples": "fixtures/guardrail_samples.json",
+    "doc_invoice":       "fixtures/doc_invoice.txt",
+    "doc_nda":           "fixtures/doc_nda.txt",
+    "doc_w2":            "fixtures/doc_w2.txt",
+    "doc_loan":          "fixtures/doc_loan.txt",
+    "doc_contract":      "fixtures/doc_contract.txt",
+    "doc_custom_fields": "fixtures/doc_custom_fields.json"
+  },
+  "test_timeouts": {
+    "sync_request_ms": 10000,
+    "async_job_poll_interval_ms": 2000,
+    "async_job_max_wait_ms": 60000
+  }
+}

@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+/* ── Light palette ───────────────────────────────────────────── */
+:root {
+  --canvas:   #f9fafb;
+  --card:     #ffffff;
+  --inset:    #f0f9ff;
+
+  --edge:     #e5e7eb;
+  --edge-2:   #f0f9ff;
+  --edge-3:   #bae6fd;
+
+  --ink:      #0c1a2e;
+  --ink-2:    #1e3a5f;
+  --ink-3:    #475569;
+  --ink-4:    #94a3b8;
+
+  --brand:    #0ea5e9;
+  --brand-hi: #0284c7;
+  --brand-lo: #e0f2fe;
+
+  --fuchsia:  #d946ef;
+}
+
+/* ── Dark palette ────────────────────────────────────────────── */
+.dark {
+  --canvas:   #030712;
+  --card:     #050d1a;
+  --inset:    #0c1a2e;
+
+  --edge:     #0f2030;
+  --edge-2:   #0c1a2e;
+  --edge-3:   #1e3a5f;
+
+  --ink:      #f0f9ff;
+  --ink-2:    #bae6fd;
+  --ink-3:    #7dd3fc;
+  --ink-4:    #64748b;
+
+  --brand:    #0ea5e9;
+  --brand-hi: #38bdf8;
+  --brand-lo: #0c1a2e;
+
+  --fuchsia:  #d946ef;
+}
+
+/* ── Register as Tailwind color tokens ───────────────────────── */
+@theme inline {
+  --color-canvas:    var(--canvas);
+  --color-card:      var(--card);
+  --color-inset:     var(--inset);
+
+  --color-edge:      var(--edge);
+  --color-edge-2:    var(--edge-2);
+  --color-edge-3:    var(--edge-3);
+
+  --color-ink:       var(--ink);
+  --color-ink-2:     var(--ink-2);
+  --color-ink-3:     var(--ink-3);
+  --color-ink-4:     var(--ink-4);
+
+  --color-brand:     var(--brand);
+  --color-brand-hi:  var(--brand-hi);
+  --color-brand-lo:  var(--brand-lo);
+
+  --color-fuchsia:   var(--fuchsia);
+}
+
+body {
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* ── Monospace ────────────────────────────────────────────────── */
+pre, code, .font-mono {
+  font-family: var(--jb-mono), 'SF Mono', 'Fira Mono', Menlo, monospace;
+}
+
+/* Code blocks — light mode */
+pre {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #1e293b !important;
+  border-radius: 10px;
+  padding: 16px 18px;
+  font-size: 12px;
+  line-height: 1.7;
+  overflow-x: auto;
+}
+
+/* Code blocks — dark mode */
+.dark pre {
+  background: #030712 !important;
+  border-color: #0f2030 !important;
+  color: #7dd3fc !important;
+}

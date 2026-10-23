@@ -1,0 +1,31 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ag_platform
+      POSTGRES_USER: ag
+      POSTGRES_PASSWORD: ag
+    ports:
+      - "5433:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - "8100:8100"
+    env_file:
+      - path: ./api/.env
+        required: false
+    environment:
+      DATABASE_URL: postgresql+asyncpg://ag:ag@postgres:5432/ag_platform
+      DASHBOARD_URL: http://localhost:3000
+      PUBLIC_API_URL: http://localhost:8100
+    depends_on:
+      - postgres
+    command: uvicorn main:app --host 0.0.0.0 --port 8100 --reload
+
+volumes:
+  pg_data:

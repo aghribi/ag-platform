@@ -1,0 +1,38 @@
+INVOICE
+
+From:   Kraken Analytics GmbH
+        Rosenthaler Str. 76
+        10119 Berlin, Germany
+        VAT: DE 289 471 503
+        accounts@kraken-analytics.de
+
+To:     Fairfield Logistics AG
+        Bahnhofstrasse 12
+        8001 Zürich, Switzerland
+        Attn: Finance Department
+
+Invoice No:     KA-2024-0583
+Issue Date:     2024-10-14
+Due Date:       2024-11-13
+Payment Terms:  Net 30
+
+─────────────────────────────────────────────────────────────
+Description                                  Qty    Unit EUR    Total EUR
+─────────────────────────────────────────────────────────────
+Platform Analytics License — Q4 2024          1    4,800.00    4,800.00
+Custom Dashboard Integration (8h at 180/h)    1    1,440.00    1,440.00
+Priority Support Package                      1      760.00      760.00
+─────────────────────────────────────────────────────────────
+                                         Subtotal:  7,000.00
+                                      VAT 19%:      1,330.00
+                                   TOTAL DUE:       8,330.00
+─────────────────────────────────────────────────────────────
+
+Payment Instructions:
+Bank:    Deutsche Bank AG
+IBAN:    DE89 3704 0044 0532 0130 00
+BIC:     COBADEFFXXX
+Ref:     KA-2024-0583
+
+Late payments are subject to 1.5% monthly interest per German commercial law.
+For billing enquiries: accounts@kraken-analytics.de

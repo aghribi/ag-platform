@@ -1,0 +1,120 @@
+{
+  "tokenize_cases": [
+    {
+      "id": "T01_email",
+      "description": "Personal email in password reset notification",
+      "text": "Hi Natasha, a password reset was requested for your account. Click the link or contact support at natasha.volkov@redpine-labs.io.",
+      "expected_entities": ["EMAIL"]
+    },
+    {
+      "id": "T02_phone",
+      "description": "US phone with parentheses, no +1 prefix",
+      "text": "Your delivery window is 2pm-6pm today. Call our driver at (512) 867-0241 if you have any access issues.",
+      "expected_entities": ["PHONE"]
+    },
+    {
+      "id": "T03_ssn",
+      "description": "SSN in payroll record",
+      "text": "Payroll entry for Q3: Employee Terrence Okafor, SSN 318-47-5902, gross $82,400.",
+      "expected_entities": ["SSN"]
+    },
+    {
+      "id": "T04_credit_card",
+      "description": "Visa card with hyphen separators",
+      "text": "Transaction approved for card 4532-1890-7643-0021 at Merchant ID 88291. Amount: €149.99.",
+      "expected_entities": ["CREDIT_CARD"]
+    },
+    {
+      "id": "T05_ip_address",
+      "description": "IP address in server access log",
+      "text": "Access denied: repeated failed login from 172.16.254.1 on the admin panel. IP has been blocked.",
+      "expected_entities": ["IP_ADDRESS"]
+    },
+    {
+      "id": "T06_multi_pii",
+      "description": "Multiple PII types in onboarding document",
+      "text": "New hire packet for samuel.griffin@techwave-corp.com. SSN: 492-03-7815. Cell: +1-617-555-0124. Company card: 5412 7534 9201 8863. Workstation IP: 10.0.1.200.",
+      "expected_entities": ["EMAIL", "SSN", "PHONE", "CREDIT_CARD", "IP_ADDRESS"]
+    },
+    {
+      "id": "T07_no_pii",
+      "description": "Code documentation with no PII",
+      "text": "The retry logic uses exponential backoff starting at 500ms, doubling up to a maximum of 32 seconds. All transient errors trigger a retry; permanent HTTP 4xx errors do not.",
+      "expected_entities": []
+    },
+    {
+      "id": "T08_email_plus_phone",
+      "description": "Email and international phone in vendor contact",
+      "text": "Vendor escalation contact: procurement@hollandia-freight.nl, direct line +31-20-555-0193.",
+      "expected_entities": ["EMAIL", "PHONE"]
+    },
+    {
+      "id": "T09_ssn_credit_card",
+      "description": "SSN and Mastercard in insurance claim",
+      "text": "Claim filed by policyholder SSN 773-28-6140. Premium payment on file: Mastercard 5500 0000 0000 0004.",
+      "expected_entities": ["SSN", "CREDIT_CARD"]
+    },
+    {
+      "id": "T10_ip_range_text",
+      "description": "Two IPs in network diagnostic report",
+      "text": "Latency spike detected between gateway 192.168.0.1 and upstream resolver 8.8.4.4. MTU mismatch suspected.",
+      "expected_entities": ["IP_ADDRESS"]
+    }
+  ],
+  "detokenize_cases": [
+    {
+      "id": "D01_round_trip",
+      "description": "Tokenize then detokenize should recover originals",
+      "text": "Contract signed by elena.marchetti@istituto-nord.it. Her SSN on file is 602-85-3317.",
+      "expected_entities": ["EMAIL", "SSN"]
+    }
+  ],
+  "tokens_store_cases": [
+    {
+      "id": "S01_store_email",
+      "description": "Manually store an email token mapping",
+      "value": "ops-alert@secured-infra.net",
+      "entity_type": "EMAIL",
+      "subject_id": "subj_gamma_9012"
+    },
+    {
+      "id": "S02_store_phone",
+      "description": "Manually store a phone token mapping",
+      "value": "+1-415-555-0167",
+      "entity_type": "PHONE",
+      "subject_id": "subj_delta_3344"
+    }
+  ],
+  "subject_dsar_cases": [
+    {
+      "id": "DS01_dsar_lookup",
+      "description": "Retrieve all tokens for a subject",
+      "subject_id": "subj_gamma_9012"
+    },
+    {
+      "id": "DS02_dsar_delete",
+      "description": "Delete all tokens for a subject (right to erasure)",
+      "subject_id": "subj_delta_3344"
+    }
+  ],
+  "edge_cases": [
+    {
+      "id": "E01_empty_text",
+      "description": "Empty string — API should reject with 422",
+      "text": "",
+      "expected_entities": []
+    },
+    {
+      "id": "E02_whitespace_only",
+      "description": "Only whitespace — API should reject with 422",
+      "text": "   \t\n   ",
+      "expected_entities": []
+    },
+    {
+      "id": "E03_long_text",
+      "description": "Multi-paragraph document with one embedded email",
+      "text": "Annual infrastructure review — FY2024. The operations team completed scheduled maintenance on all primary database clusters during the low-traffic window. No service interruptions were recorded. Capacity planning for H2 2025 has been completed and approved by the infrastructure board. Storage utilization is currently at 61% across all regions. For questions about this report or requests for underlying metrics, contact the platform reliability lead at reliability-lead@cloudops-internal.com. All findings in this report are classified as internal-only and must not be shared externally without explicit approval from the Chief Technology Officer.",
+      "expected_entities": ["EMAIL"]
+    }
+  ]
+}

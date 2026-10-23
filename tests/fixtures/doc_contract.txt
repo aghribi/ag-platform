@@ -1,0 +1,66 @@
+PROFESSIONAL SERVICES AGREEMENT
+
+Agreement Reference: PSA-2025-0031
+Effective Date:      January 15, 2025
+Expiration Date:     January 14, 2027
+
+PARTIES
+
+Client:     Castlerock Financial Services Ltd.
+            Tower 42, 25 Old Broad Street, London EC2N 1HN, United Kingdom
+            Company No: 08734912
+            VAT: GB 304 1823 67
+            Contact: legal@castlerock-financial.co.uk
+            Represented by: Mr. James Whitmore, Chief Financial Officer
+
+Provider:   Luminary Data Solutions S.A.S.
+            12 Avenue de l'Opera, 75001 Paris, France
+            SIRET: 841 329 047 00023
+            VAT: FR 72 841329047
+            Contact: contracts@luminary-data.fr
+            Represented by: Ms. Camille Roux, Director of Partnerships
+
+RECITALS
+
+Client seeks to engage Provider for the design, delivery, and ongoing maintenance of a real-time regulatory reporting platform (MiFID II / EMIR compliance), covering all EU and UK trading desks.
+
+1. SERVICES
+Provider shall deliver the services described in Exhibit A ("Services"), including:
+   (a) Architecture and build of the regulatory reporting pipeline (6-month project phase)
+   (b) Integration with existing trade capture and risk management systems
+   (c) Monthly regulatory report generation and submission to FCA and ESMA
+   (d) Continuous monitoring, alerting, and annual penetration testing
+
+2. CONTRACT VALUE AND PAYMENT
+2.1 Total Contract Value: GBP 890,000 over the term
+2.2 Project Phase (months 1-6): GBP 60,000/month
+2.3 Ongoing Phase (months 7-24): GBP 25,000/month
+2.4 Payment terms: Net 30 days from invoice date
+2.5 Expenses: Reasonable pre-approved travel reimbursed at cost
+
+3. INTELLECTUAL PROPERTY
+Client shall own all custom deliverables developed specifically for Client under this Agreement upon payment in full. Provider retains ownership of all pre-existing IP and general frameworks.
+
+4. DATA PROTECTION
+Both Parties shall comply with UK GDPR and EU GDPR. Provider shall process Client personal data only as a data processor under a separate Data Processing Agreement.
+
+5. CONFIDENTIALITY
+Each Party shall maintain the other's Confidential Information with at least the same degree of care as its own, but no less than reasonable care. This obligation survives termination for six (6) years.
+
+6. LIABILITY
+Provider's aggregate liability shall not exceed the fees paid in the twelve (12) months preceding the claim. Neither Party shall be liable for indirect or consequential damages.
+
+7. TERM AND TERMINATION
+This Agreement runs from the Effective Date for two (2) years. Either Party may terminate for material uncured breach with 45 days written notice. Client may terminate for convenience with 90 days written notice, subject to payment of all fees earned to date.
+
+8. GOVERNING LAW
+This Agreement is governed by English law. Disputes shall be referred to arbitration under the ICC Rules, with seat in London.
+
+SIGNATURES
+
+CASTLEROCK FINANCIAL SERVICES LTD.      LUMINARY DATA SOLUTIONS S.A.S.
+
+Signed: ______________________          Signed: ______________________
+Name:   Mr. James Whitmore              Name:   Ms. Camille Roux
+Title:  Chief Financial Officer         Title:  Director of Partnerships
+Date:   January 15, 2025               Date:   January 15, 2025

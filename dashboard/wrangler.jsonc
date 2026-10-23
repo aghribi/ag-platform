@@ -1,0 +1,21 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ag-dashboard",
+  "main": ".open-next/worker.js",
+  // nodejs_compat and a compat date >= 2024-09-23 are required by
+  // @opennextjs/cloudflare — it runs Next on the Workers Node.js runtime.
+  "compatibility_date": "2026-08-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "routes": [
+    // Custom domain: Cloudflare manages the DNS record for this hostname and
+    // routes it straight to the Worker.
+    { "pattern": "ai.artifact-network.org", "custom_domain": true }
+  ],
+  "observability": {
+    "enabled": true
+  }
+}

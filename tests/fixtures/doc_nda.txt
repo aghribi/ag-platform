@@ -1,0 +1,45 @@
+BILATERAL NON-DISCLOSURE AGREEMENT
+
+Effective Date: March 3, 2025
+
+PARTIES
+
+This Bilateral Non-Disclosure Agreement ("Agreement") is entered into between:
+
+Party A: Nexora Robotics Ltd., a UK company registered in England and Wales with company number 11482073, with offices at 45 Canary Wharf, London E14 5AB, United Kingdom ("Nexora"), represented by Ms. Priya Anand, Chief Executive Officer.
+
+Party B: Silica Systems GmbH, a German GmbH with registered seat at Leopoldstrasse 208, 80804 Munich, Germany, HRB 219045 ("Silica"), represented by Dr. Klaus Rentschler, Managing Director.
+
+RECITALS
+
+The Parties wish to explore a potential joint venture for autonomous inspection robotics in industrial environments (the "Purpose") and anticipate sharing proprietary engineering designs, firmware, field trial data, and financial projections (collectively "Confidential Information").
+
+1. DEFINITION
+"Confidential Information" includes any technical, business, or financial data disclosed by either Party, in any form, that is designated as confidential or that would reasonably be understood as confidential given its nature and the circumstances of disclosure.
+
+2. OBLIGATIONS
+Each Party agrees to: (a) keep all received Confidential Information strictly confidential; (b) use Confidential Information exclusively for the Purpose; (c) not disclose Confidential Information to third parties without express prior written consent; (d) protect Confidential Information using at least the same level of care as its own confidential information, but no less than reasonable care.
+
+3. EXCLUSIONS
+Obligations shall not apply to information that: (a) is or enters the public domain through no fault of the receiving Party; (b) was lawfully known to the receiving Party prior to disclosure; (c) is independently developed without access to Confidential Information; (d) is required to be disclosed by applicable law or regulatory authority, provided prompt notice is given to the disclosing Party.
+
+4. TERM
+This Agreement is effective as of the Effective Date and shall remain in force for three (3) years, unless extended or terminated earlier by mutual written consent.
+
+5. RETURN / DESTRUCTION
+Upon request or termination, each Party shall within fifteen (15) business days return or certifiably destroy all Confidential Information in any form, and confirm such action in writing.
+
+6. REMEDIES
+The Parties acknowledge that unauthorized disclosure may cause irreparable harm and that injunctive relief, without bond or proof of actual damages, shall be an available remedy in addition to all other legal and equitable remedies.
+
+7. GOVERNING LAW
+This Agreement is governed by the laws of Germany. All disputes arising hereunder shall be submitted to the exclusive jurisdiction of the courts of Munich.
+
+IN WITNESS WHEREOF, the Parties have executed this Agreement as of the Effective Date.
+
+NEXORA ROBOTICS LTD.                     SILICA SYSTEMS GmbH
+
+Signature: ______________________        Signature: ______________________
+Name:      Ms. Priya Anand              Name:      Dr. Klaus Rentschler
+Title:     Chief Executive Officer       Title:     Managing Director
+Date:      March 3, 2025                Date:      March 3, 2025

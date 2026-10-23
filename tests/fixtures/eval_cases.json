@@ -1,0 +1,160 @@
+{
+  "exact_match_cases": [
+    {
+      "id": "EM01_exact_hit",
+      "description": "Output matches expected exactly",
+      "scorer": "exact_match",
+      "input": "What is the atomic number of carbon?",
+      "output": "6",
+      "expected": "6",
+      "expected_score_range": [1.0, 1.0]
+    },
+    {
+      "id": "EM02_exact_miss",
+      "description": "Output does not match expected",
+      "scorer": "exact_match",
+      "input": "What is the atomic number of carbon?",
+      "output": "12",
+      "expected": "6",
+      "expected_score_range": [0.0, 0.0]
+    },
+    {
+      "id": "EM03_case_difference",
+      "description": "Case-only difference — may or may not match",
+      "scorer": "exact_match",
+      "input": "Name the capital city of France.",
+      "output": "paris",
+      "expected": "Paris",
+      "expected_score_range": [0.0, 1.0]
+    },
+    {
+      "id": "EM04_empty_output",
+      "description": "Model produced no output",
+      "scorer": "exact_match",
+      "input": "What is the currency of Japan?",
+      "output": "",
+      "expected": "Yen",
+      "expected_score_range": [0.0, 0.0]
+    }
+  ],
+  "rouge_l_cases": [
+    {
+      "id": "RL01_perfect",
+      "description": "Output identical to reference",
+      "scorer": "rouge_l",
+      "input": "Restate: The sun rises in the east.",
+      "output": "The sun rises in the east.",
+      "expected": "The sun rises in the east.",
+      "expected_score_range": [0.99, 1.0]
+    },
+    {
+      "id": "RL02_high_overlap",
+      "description": "Substantial word overlap with paraphrase",
+      "scorer": "rouge_l",
+      "input": "Summarize: Mitochondria generate ATP through cellular respiration, converting glucose and oxygen into energy.",
+      "output": "Mitochondria convert glucose and oxygen into ATP via cellular respiration.",
+      "expected": "Mitochondria produce ATP by performing cellular respiration, using glucose and oxygen to generate usable energy for the cell.",
+      "expected_score_range": [0.2, 0.85]
+    },
+    {
+      "id": "RL03_low_overlap",
+      "description": "Minimal word overlap — wrong domain",
+      "scorer": "rouge_l",
+      "input": "Describe how tides are formed.",
+      "output": "Tides are caused by the gravitational pull of the moon and sun on Earth's oceans.",
+      "expected": "The process of tectonic plate subduction creates volcanic activity along fault lines beneath the ocean floor.",
+      "expected_score_range": [0.0, 0.25]
+    },
+    {
+      "id": "RL04_one_word_off",
+      "description": "Single substitution difference",
+      "scorer": "rouge_l",
+      "input": "Complete: The human body has approximately ___ bones.",
+      "output": "The human body has approximately 206 bones.",
+      "expected": "The human body has approximately 207 bones.",
+      "expected_score_range": [0.7, 0.98]
+    }
+  ],
+  "regex_cases": [
+    {
+      "id": "RX01_iso_date",
+      "description": "Output contains an ISO 8601 date",
+      "scorer": "regex",
+      "input": "Format the date March 15 2024 in ISO format.",
+      "output": "The ISO format is 2024-03-15.",
+      "expected": "\\d{4}-\\d{2}-\\d{2}",
+      "expected_score_range": [1.0, 1.0]
+    },
+    {
+      "id": "RX02_no_match",
+      "description": "Output does not match ISO date pattern",
+      "scorer": "regex",
+      "input": "Format the date March 15 2024 in ISO format.",
+      "output": "March fifteenth, twenty twenty-four.",
+      "expected": "\\d{4}-\\d{2}-\\d{2}",
+      "expected_score_range": [0.0, 0.0]
+    },
+    {
+      "id": "RX03_url_pattern",
+      "description": "Output contains an https URL",
+      "scorer": "regex",
+      "input": "Give me a link to the Python documentation.",
+      "output": "The official Python docs are at https://docs.python.org/3/.",
+      "expected": "https?://[\\w./%-]+",
+      "expected_score_range": [1.0, 1.0]
+    },
+    {
+      "id": "RX04_version_number",
+      "description": "Output contains a semantic version",
+      "scorer": "regex",
+      "input": "What version of Node.js is recommended for production?",
+      "output": "Node.js 20.11.0 LTS is recommended for production environments.",
+      "expected": "\\d+\\.\\d+\\.\\d+",
+      "expected_score_range": [1.0, 1.0]
+    }
+  ],
+  "llm_judge_cases": [
+    {
+      "id": "LJ01_good_answer",
+      "description": "Accurate and well-structured answer",
+      "scorer": "llm_judge",
+      "input": "Explain what a deadlock is in database systems in one sentence.",
+      "output": "A deadlock occurs when two or more transactions each hold a lock that the other needs, causing them to wait indefinitely for each other to release.",
+      "expected": "A clear, accurate one-sentence explanation of database deadlocks.",
+      "criteria": "Is the response factually correct, concise, and does it clearly explain the mutual waiting dependency in a deadlock?",
+      "expected_score_range": [0.6, 1.0]
+    },
+    {
+      "id": "LJ02_irrelevant_answer",
+      "description": "Response completely off-topic",
+      "scorer": "llm_judge",
+      "input": "Explain what a deadlock is in database systems in one sentence.",
+      "output": "The Mediterranean Sea borders southern Europe and northern Africa.",
+      "expected": "A clear, accurate one-sentence explanation of database deadlocks.",
+      "criteria": "Is the response factually correct, concise, and does it clearly explain the mutual waiting dependency in a deadlock?",
+      "expected_score_range": [0.0, 0.2]
+    },
+    {
+      "id": "LJ03_partial_answer",
+      "description": "Partially correct but misses key elements",
+      "scorer": "llm_judge",
+      "input": "Name the layers of the OSI model from bottom to top.",
+      "output": "Physical, Data Link, Network, Transport, Session, and Application.",
+      "expected": "Physical, Data Link, Network, Transport, Session, Presentation, Application.",
+      "criteria": "Does the response correctly name all 7 OSI layers in the right order?",
+      "expected_score_range": [0.1, 0.95]
+    }
+  ],
+  "multi_scorer_cases": [
+    {
+      "id": "MS01_all_scorers",
+      "description": "Call all four scorers on the same case",
+      "scorers": ["exact_match", "rouge_l", "regex", "llm_judge"],
+      "input": "What is the two-letter ISO 3166 country code for Japan?",
+      "output": "JP",
+      "expected": "JP",
+      "regex_pattern": "^[A-Z]{2}$",
+      "criteria": "Is the two-letter ISO country code for Japan correctly provided?"
+    }
+  ]
+}
