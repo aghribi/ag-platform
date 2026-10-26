@@ -6,7 +6,7 @@ Hosted API and dashboard for [ag-pii-vault](https://github.com/aghribi/ag-pii-va
 - `dashboard/`: Next.js dashboard, deployed as a Cloudflare Worker (OpenNext) or as a container.
 - `tests/`: integration test runner against a running API.
 
-Production: API at https://ai-api.artifact-network.org, dashboard at https://ai.artifact-network.org.
+No public deployment is running. The values below are the intended production settings.
 
 ## Run locally
 
